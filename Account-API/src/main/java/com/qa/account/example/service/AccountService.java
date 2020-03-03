@@ -14,18 +14,22 @@ import com.qa.account.example.persistence.repo.AccountRepo;
 public class AccountService {
 
 	private AccountRepo repo;
-
-	public AccountService(AccountRepo repo) {
+	private LogService log;
+	
+	public AccountService(AccountRepo repo, LogService log) {
 		super();
 		this.repo = repo;
+		this.log = log;
 	}
 
 	public ResponseEntity<List<Account>> getAccounts() {
+		log.log("GET all Accounts");
 		return ResponseEntity.ok(repo.findAll());
 	}
 
 	public ResponseEntity<Account> getAccount(Long id) {
 		try {
+			log.log("GET Account with id: " + id);
 			Account found = repo.findById(id).orElseThrow(() -> new AccountNotFoundException(id.toString()));
 			return ResponseEntity.ok(found);
 		} catch (AccountNotFoundException anfe) {
@@ -35,10 +39,12 @@ public class AccountService {
 	}
 
 	public ResponseEntity<Account> addAccount(Account account) {
+		log.log("POST " + account);
 		return ResponseEntity.ok(this.repo.save(account));
 	}
 
 	public ResponseEntity<Object> deleteAccount(Long id) {
+		log.log("DELETE Account with id: " + id);
 		if (accountExists(id)) {
 			repo.deleteById(id);
 			return ResponseEntity.ok().build();
@@ -53,6 +59,7 @@ public class AccountService {
 	public ResponseEntity<Object> updateAccount(Account account, Long id) {
 		if (accountExists(id)) {
 			Account toUpdate = this.repo.findById(id).get();
+			log.log("UPDATE " + toUpdate + "to be " + account);
 			toUpdate.setFirstName(account.getFirstName());
 			toUpdate.setLastName(account.getLastName());
 			repo.save(account);

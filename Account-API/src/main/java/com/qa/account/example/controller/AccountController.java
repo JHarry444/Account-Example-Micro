@@ -32,7 +32,7 @@ public class AccountController {
 		this.rest = rest.build();
 	}
 
-	@PostMapping(value = "/register", consumes = "application/json")
+	@PostMapping(value = "/register")
 	public ResponseEntity<Account> registerAccount(@RequestBody Account account) {
 		account.setAccountNumber(this.rest.getForObject("http://localhost:8081/number/generate", String.class));
 		account.setPrize(this.rest.getForObject(
