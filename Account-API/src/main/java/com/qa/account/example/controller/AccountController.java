@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.qa.account.example.persistence.domain.Account;
 import com.qa.account.example.service.AccountService;
@@ -25,18 +24,12 @@ public class AccountController {
 
 	private AccountService service;
 
-	private RestTemplate rest;
-
 	public AccountController(AccountService service, RestTemplateBuilder rest) {
 		this.service = service;
-		this.rest = rest.build();
 	}
 
 	@PostMapping(value = "/register")
 	public ResponseEntity<Account> registerAccount(@RequestBody Account account) {
-		account.setAccountNumber(this.rest.getForObject("http://localhost:8081/number/generate", String.class));
-		account.setPrize(this.rest.getForObject(
-				"http://localhost:8082/prize/generate?accNumber=" + account.getAccountNumber(), Double.class));
 		return this.service.addAccount(account);
 	}
 

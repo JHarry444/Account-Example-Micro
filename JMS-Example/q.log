@@ -1,14 +1,12 @@
-2020-03-03 11:22:02.004  INFO 22813 --- [main] com.qa.jms.JmsExampleApplication         : Starting JmsExampleApplication on JHarry-Laptop with PID 22813 (/home/jharry/Documents/bae-spring-workspace/JMS-Example/target/classes started by jharry in /home/jharry/Documents/bae-spring-workspace/JMS-Example)
-2020-03-03 11:22:02.008  INFO 22813 --- [main] com.qa.jms.JmsExampleApplication         : No active profile set, falling back to default profiles: default
-2020-03-03 11:22:02.845  INFO 22813 --- [ActiveMQ Task-1] o.a.a.t.failover.FailoverTransport       : Successfully connected to tcp://localhost:61616
-2020-03-03 11:22:02.877  INFO 22813 --- [main] com.qa.jms.JmsExampleApplication         : Started JmsExampleApplication in 1.209 seconds (JVM running for 1.941)
-2020-03-03 11:22:12.133  INFO 22813 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"Selena Gomez">
-2020-03-03 11:23:05.487  INFO 22813 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"Selena Gomez">
-2020-03-03 11:35:28.651  INFO 22813 --- [RMI TCP Connection(38)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2020-03-03 12:13:58.941  INFO 25705 --- [main] com.qa.jms.JmsExampleApplication         : Starting JmsExampleApplication on JHarry-Laptop with PID 25705 (/home/jharry/Documents/bae-spring-workspace/JMS-Example/target/classes started by jharry in /home/jharry/Documents/bae-spring-workspace/JMS-Example)
-2020-03-03 12:13:58.944  INFO 25705 --- [main] com.qa.jms.JmsExampleApplication         : No active profile set, falling back to default profiles: default
-2020-03-03 12:14:00.310  INFO 25705 --- [ActiveMQ Task-1] o.a.a.t.failover.FailoverTransport       : Successfully connected to tcp://localhost:61616
-2020-03-03 12:14:00.365  INFO 25705 --- [main] com.qa.jms.JmsExampleApplication         : Started JmsExampleApplication in 1.885 seconds (JVM running for 2.675)
-2020-03-03 12:14:07.036  INFO 25705 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"Selena Gomez">
-2020-03-03 12:22:46.865  INFO 25705 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"POST Account [id=null, firstName=Ian, lastName=Weapon, accountNumber=c919457, prize=100.0]">
-2020-03-03 12:23:27.437  INFO 25705 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"POST Account [id=null, firstName=Nick, lastName=Jones, accountNumber=b275819, prize=50.0]">
+2020-03-03 13:09:04.926  INFO 30607 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-03-03 13:09:07.444  INFO 31024 --- [main] com.qa.jms.JmsExampleApplication         : Starting JmsExampleApplication on JHarry-Laptop with PID 31024 (/home/jharry/git/Account-Example-Micro/JMS-Example/target/classes started by jharry in /home/jharry/git/Account-Example-Micro/JMS-Example)
+2020-03-03 13:09:07.446  INFO 31024 --- [main] com.qa.jms.JmsExampleApplication         : No active profile set, falling back to default profiles: default
+2020-03-03 13:09:08.345  INFO 31024 --- [ActiveMQ Task-1] o.a.a.t.failover.FailoverTransport       : Successfully connected to tcp://localhost:61616
+2020-03-03 13:09:08.376  INFO 31024 --- [main] com.qa.jms.JmsExampleApplication         : Started JmsExampleApplication in 1.263 seconds (JVM running for 1.814)
+2020-03-03 13:09:16.273  INFO 31024 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"POST Account [id=null, firstName=Nick, lastName=Jones, accountNumber=c284204, prize=100.0]">
+2020-03-03 13:14:34.242  INFO 31024 --- [RMI TCP Connection(18)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-03-03 13:14:38.795  INFO 31578 --- [main] com.qa.jms.JmsExampleApplication         : Starting JmsExampleApplication on JHarry-Laptop with PID 31578 (/home/jharry/git/Account-Example-Micro/JMS-Example/target/classes started by jharry in /home/jharry/git/Account-Example-Micro/JMS-Example)
+2020-03-03 13:14:38.802  INFO 31578 --- [main] com.qa.jms.JmsExampleApplication         : No active profile set, falling back to default profiles: default
+2020-03-03 13:14:40.987  INFO 31578 --- [ActiveMQ Task-1] o.a.a.t.failover.FailoverTransport       : Successfully connected to tcp://localhost:61616
+2020-03-03 13:14:41.094  INFO 31578 --- [main] com.qa.jms.JmsExampleApplication         : Started JmsExampleApplication in 3.366 seconds (JVM running for 5.299)
+2020-03-03 13:14:48.571  INFO 31578 --- [DefaultMessageListenerContainer-1] com.qa.jms.receiver.Receiver             : Received <"POST Account [id=null, firstName=Nick, lastName=Jones, accountNumber=c496610, prize=100.0]">

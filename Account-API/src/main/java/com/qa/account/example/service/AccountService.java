@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.security.auth.login.AccountNotFoundException;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.qa.account.example.persistence.domain.Account;
 import com.qa.account.example.persistence.repo.AccountRepo;
@@ -15,11 +18,19 @@ public class AccountService {
 
 	private AccountRepo repo;
 	private LogService log;
-	
-	public AccountService(AccountRepo repo, LogService log) {
+	private RestTemplate rest;
+
+	@Value("${services.locations.number-generator}")
+	private String numGenURL;
+
+	@Value("${services.locations.prize-generator}")
+	private String prizeGenURL;
+
+	public AccountService(AccountRepo repo, LogService log, RestTemplateBuilder restBuilder) {
 		super();
 		this.repo = repo;
 		this.log = log;
+		this.rest = restBuilder.build();
 	}
 
 	public ResponseEntity<List<Account>> getAccounts() {
@@ -39,6 +50,8 @@ public class AccountService {
 	}
 
 	public ResponseEntity<Account> addAccount(Account account) {
+		account.setAccountNumber(this.rest.getForObject(numGenURL, String.class));
+		account.setPrize(this.rest.getForObject(prizeGenURL + account.getAccountNumber(), Double.class));
 		log.log("POST " + account);
 		return ResponseEntity.ok(this.repo.save(account));
 	}

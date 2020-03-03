@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Receiver {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
 
-	@JmsListener(destination = "bloop")
-	  public void receiveMessage(String msg) {
-	    LOGGER.info("Received <" + msg+ ">");
-	  }
+	@JmsListener(destination = "${spring.jms.template.default-destination}")
+	public void receiveMessage(String msg) {
+		LOGGER.info("Received <" + msg + ">");
+	}
 }
