@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qa.account.example.service.AccountNumGenService;
 
 @RestController
-@RequestMapping("/number")
 public class NumGenController {
 
 	private AccountNumGenService service;
@@ -17,7 +16,7 @@ public class NumGenController {
 		this.service = service;
 	}
 
-	@GetMapping("/generate")
+	@GetMapping("/")
 	public ResponseEntity<String> generateNumber() {
 		return this.service.genNumber();
 	}

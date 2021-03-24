@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qa.account.prize.service.PrizeGenService;
 
 @RestController
-@RequestMapping("/prize")
 public class PrizeGenController {
 
 	private PrizeGenService service;
@@ -20,7 +19,7 @@ public class PrizeGenController {
 		this.service = service;
 	}
 
-	@GetMapping("/generate")
+	@GetMapping("/")
 	public ResponseEntity<String> generatePrize(@PathParam("accNumber") String accNumber) {
 		Double prize = this.service.genPrize(accNumber);
 		if (prize == null) {

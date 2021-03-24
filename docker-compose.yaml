@@ -1,43 +1,32 @@
 version: "3.8"
 services:
-    discovery:
+    discovery-server:
         build: ./Discovery-Server
         container_name: discovery-server
-        volumes: 
-          - type: volume
-            source: maven-cache
-            target: ~/.m2
-    account:
+        ports: 
+          - target: 4494
+            published: 4494
+    account-api:
         build: ./Account-API
         container_name: account-api
-        volumes:
-          - type: volume
-            source: maven-cache
-            target: ~/.m2
         ports: 
           - target: 8081
             published: 8081
         depends_on:
-          - "discovery"
-    number:
+          - "discovery-server"
+    number-gen:
         build: ./Account-Num-Gen
         container_name: number-gen
-        volumes: 
-          - type: volume
-            source: maven-cache
-            target: ~/.m2
+        ports: 
+          - target: 8082
+            published: 8082
         depends_on:
-          - "discovery"
-          - "account"
-    prize:
+          - "account-api"
+    prize-gen:
         build: ./Account-Prize-Gen
         container_name: prize-gen
-        volumes: 
-          - type: volume
-            source: maven-cache
-            target: ~/.m2
+        ports: 
+          - target: 8083
+            published: 8083
         depends_on:
-          - "discovery"
-          - "account"
-volumes: 
-  maven-cache:
+          - "account-api"
