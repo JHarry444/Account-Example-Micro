@@ -1,13 +1,13 @@
-package com.qa.account.example;
+package com.qa.discovery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class AccountExampleApplicationTests {
+class DiscoveryServerApplicationTests {
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() {
 	}
 
 }

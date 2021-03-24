@@ -2,10 +2,7 @@ package com.qa.account.example.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,7 +15,7 @@ public class AccountService {
 
 	private AccountRepo repo;
 	private LogService log;
-	private RestTemplate rest;
+	private RestTemplate restTemplate;
 
 	@Value("${services.locations.number-generator}")
 	private String numGenURL;
@@ -26,11 +23,15 @@ public class AccountService {
 	@Value("${services.locations.prize-generator}")
 	private String prizeGenURL;
 
-	public AccountService(AccountRepo repo, LogService log, RestTemplateBuilder restBuilder) {
+	public AccountService(AccountRepo repo, LogService log, RestTemplate restTemplate) {
 		super();
 		this.repo = repo;
 		this.log = log;
-		this.rest = restBuilder.build();
+		this.restTemplate = restTemplate;
+	}
+
+	private String getURL(String serviceURL) {
+		return serviceURL.startsWith("http") ? serviceURL : "http://" + serviceURL;
 	}
 
 	public List<Account> getAccounts() {
@@ -45,8 +46,11 @@ public class AccountService {
 	}
 
 	public Account addAccount(Account account) {
-		account.setAccountNumber(this.rest.getForObject(numGenURL, String.class));
-		account.setPrize(this.rest.getForObject(prizeGenURL + account.getAccountNumber(), Double.class));
+		String accountNumber = this.restTemplate.getForObject(getURL(numGenURL), String.class);
+		account.setAccountNumber(accountNumber);
+		String prize = this.restTemplate.getForObject(getURL(prizeGenURL + "?accNumber=" + accountNumber),
+				String.class);
+		account.setPrize(Double.parseDouble(prize));
 		log.log("POST " + account);
 		return this.repo.save(account);
 	}

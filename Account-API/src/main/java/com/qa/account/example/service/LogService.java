@@ -10,11 +10,11 @@ public class LogService {
 
 	public LogService(JmsTemplate jms) {
 		super();
-		this.jms =jms;
+		this.jms = jms;
 	}
 
 	public void log(String msg) {
-		jms.convertAndSend(msg);
+//		jms.convertAndSend(msg);
 	}
 
 }
