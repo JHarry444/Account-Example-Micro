@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qa.account</groupId>
-	<artifactId>Account-Example</artifactId>
+	<artifactId>Account-API</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Account-Example</name>
+	<name>Account-API</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

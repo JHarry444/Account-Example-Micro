@@ -1,4 +1,4 @@
-package com.qa.account.gen.prize.controller;
+package com.qa.account.prize.controller;
 
 import javax.websocket.server.PathParam;
 
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.account.gen.prize.service.PrizeGenService;
+import com.qa.account.prize.service.PrizeGenService;
 
 @RestController
 @RequestMapping("/prize")

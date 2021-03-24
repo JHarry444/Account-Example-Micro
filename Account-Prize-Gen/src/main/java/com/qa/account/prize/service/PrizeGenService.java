@@ -1,4 +1,4 @@
-package com.qa.account.gen.prize.service;
+package com.qa.account.prize.service;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

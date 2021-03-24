@@ -1,4 +1,4 @@
-package com.qa.account.gen.prize.util.exceptions;
+package com.qa.account.prize.util.exceptions;
 
 public class AccountNotFoundException extends RuntimeException{
 

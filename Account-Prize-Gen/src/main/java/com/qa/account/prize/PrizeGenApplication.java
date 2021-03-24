@@ -1,4 +1,4 @@
-package com.qa.account.gen.prize;
+package com.qa.account.prize;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
