@@ -5,6 +5,7 @@ import java.util.List;
 import javax.websocket.server.PathParam;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,32 +25,34 @@ public class AccountController {
 
 	private AccountService service;
 
-	public AccountController(AccountService service, RestTemplateBuilder rest) {
+	public AccountController(AccountService service) {
 		this.service = service;
 	}
 
-	@PostMapping(value = "/register")
+	@PostMapping("/register")
 	public ResponseEntity<Account> registerAccount(@RequestBody Account account) {
-		return this.service.addAccount(account);
+		Account created =  this.service.addAccount(account);
+		return new ResponseEntity<Account>(created, HttpStatus.CREATED);
 	}
 
-	@GetMapping(value = "/getAll")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<Account>> getAccounts() {
-		return service.getAccounts();
+		return ResponseEntity.ok(this.service.getAccounts());
 	}
 
-	@GetMapping(value = "/get/{id}")
-	public ResponseEntity<Account> getAccount(@PathVariable("id") Long id) {
-		return this.service.getAccount(id);
+	@GetMapping("/get/{id}")
+	public ResponseEntity<Account> getAccount(@PathVariable Long id) {
+		return ResponseEntity.ok(this.service.getAccount(id));
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Object> deleteAccount(@PathVariable("id") Long id) {
-		return this.service.deleteAccount(id);
+	public ResponseEntity<String> deleteAccount(@PathVariable Long id) {
+		return this.service.deleteAccount(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<Object> updateAccount(@RequestBody Account account, @PathParam("id") Long id) {
-		return this.service.updateAccount(account, id);
+	public ResponseEntity<Account> updateAccount(@RequestBody Account account, @PathParam("id") Long id) {
+		Account updated =  this.service.updateAccount(account, id);
+		return new ResponseEntity<Account>(updated, HttpStatus.ACCEPTED);
 	}
 }

@@ -22,6 +22,11 @@ public class PrizeGenController {
 
 	@GetMapping("/generate")
 	public ResponseEntity<Double> generatePrize(@PathParam("accNumber") String accNumber) {
-		return this.service.genPrize(accNumber);
+		Double prize =  this.service.genPrize(accNumber);
+		if (prize == null) {
+			return ResponseEntity.badRequest().build();
+		} else {
+			return ResponseEntity.ok(prize);
+		}
 	}
 }

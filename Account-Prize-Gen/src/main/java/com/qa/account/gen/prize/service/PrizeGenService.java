@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PrizeGenService {
 
-	public ResponseEntity<Double> genPrize(String accountNum) {
+	public Double genPrize(String accountNum) {
 		Double prize = null;
 		if (accountNum.toLowerCase().startsWith("a")) {
 			prize = 0.0;
@@ -27,10 +27,6 @@ public class PrizeGenService {
 				prize = 10000.0;
 			}
 		}
-		if (prize == null) {
-			return ResponseEntity.badRequest().build();
-		} else {
-			return ResponseEntity.ok(prize);
-		}
+		return prize;
 	}
 }

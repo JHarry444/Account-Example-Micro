@@ -10,17 +10,20 @@ import javax.persistence.Id;
 public class Account {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "first_name")
+	@Column
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column
 	private String lastName;
 
-	@Column(unique = true, name = "account_number")
+	@Column(unique = true)
 	private String accountNumber;
+	
+	@Column
+	private double prize;
 
 	public Account(String firstName, String lastName, String accountNumber, double prize) {
 		super();
@@ -31,11 +34,8 @@ public class Account {
 	}
 
 	public Account() {
-
+		super();
 	}
-
-	@Column
-	private double prize;
 
 	public Long getId() {
 		return id;
