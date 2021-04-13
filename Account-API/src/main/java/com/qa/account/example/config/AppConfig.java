@@ -27,6 +27,6 @@ public class AppConfig {
 
 	@Bean
 	public ConnectionFactory getConnectionFactory() {
-		return new ActiveMQConnectionFactory("tcp://activemq:61616");
+		return new ActiveMQConnectionFactory();
 	}
 }
