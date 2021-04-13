@@ -1,9 +1,9 @@
 package com.qa.account.example.service;
 
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class LogService {
 
 	private JmsTemplate jms;
@@ -14,7 +14,7 @@ public class LogService {
 	}
 
 	public void log(String msg) {
-//		jms.convertAndSend(msg);
+		jms.convertAndSend(msg);
 	}
 
 }

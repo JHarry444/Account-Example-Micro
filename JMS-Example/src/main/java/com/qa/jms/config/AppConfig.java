@@ -1,5 +1,7 @@
 package com.qa.jms.config;
 
+import javax.jms.ConnectionFactory;
+
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,20 +22,16 @@ public class AppConfig {
 		converter.setTypeIdPropertyName("_type");
 		return converter;
 	}
-	  @Bean
-	  public ActiveMQConnectionFactory receiverActiveMQConnectionFactory() {
-	    ActiveMQConnectionFactory activeMQConnectionFactory =
-	        new ActiveMQConnectionFactory();
-	    return activeMQConnectionFactory;
-	  }
 
-	  @Bean
-	  public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-	    DefaultJmsListenerContainerFactory factory =
-	        new DefaultJmsListenerContainerFactory();
-	    factory
-	        .setConnectionFactory(receiverActiveMQConnectionFactory());
+	@Bean
+	public ConnectionFactory getConnectionFactory() {
+		return new ActiveMQConnectionFactory("tcp://activemq:61616");
+	}
 
-	    return factory;
-	  }
+	@Bean
+	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+		factory.setConnectionFactory(getConnectionFactory());
+		return factory;
+	}
 }

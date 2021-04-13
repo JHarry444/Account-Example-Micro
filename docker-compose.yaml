@@ -6,14 +6,14 @@ services:
         ports: 
           - target: 4494
             published: 4494
-    account-api:
-        build: ./Account-API
-        container_name: account-api
-        ports: 
-          - target: 8081
-            published: 8081
-        depends_on:
-          - "discovery-server"
+    activemq:
+      build: ./ActiveMQ
+      container_name: activemq
+      ports:
+        - target: 61616
+          published: 61616
+        # - target: 8161
+          # published: 8161
     number-gen:
         build: ./Account-Num-Gen
         container_name: number-gen
@@ -21,7 +21,7 @@ services:
           - target: 8082
             published: 8082
         depends_on:
-          - "account-api"
+          - "discovery-server"
     prize-gen:
         build: ./Account-Prize-Gen
         container_name: prize-gen
@@ -29,4 +29,22 @@ services:
           - target: 8083
             published: 8083
         depends_on:
-          - "account-api"
+          - "discovery-server"
+    account-api:
+        build: ./Account-API
+        container_name: account-api
+        ports: 
+          - target: 8081
+            published: 8081
+        depends_on:
+          - "number-gen"
+          - "prize-gen"
+          - "activemq"
+    jms-example:
+        build: ./JMS-Example
+        container_name: jms-example
+        ports: 
+          - target: 8181
+            published: 8181
+        depends_on:
+          - "activemq"
