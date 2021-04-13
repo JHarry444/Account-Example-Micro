@@ -12,8 +12,8 @@ services:
       ports:
         - target: 61616
           published: 61616
-        # - target: 8161
-          # published: 8161
+        - target: 8161
+          published: 8161
     number-gen:
         build: ./Account-Num-Gen
         container_name: number-gen
