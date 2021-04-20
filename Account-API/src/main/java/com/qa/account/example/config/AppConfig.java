@@ -1,8 +1,5 @@
 package com.qa.account.example.config;
 
-import javax.jms.ConnectionFactory;
-
-import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +22,4 @@ public class AppConfig {
 //		return converter;
 //	}
 
-	@Bean
-	public ConnectionFactory getConnectionFactory() {
-		return new ActiveMQConnectionFactory();
-	}
 }

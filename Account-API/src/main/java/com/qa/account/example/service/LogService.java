@@ -14,7 +14,7 @@ public class LogService {
 	}
 
 	public void log(String msg) {
-		jms.convertAndSend(msg);
+		jms.convertAndSend("access-log", msg);
 	}
 
 }

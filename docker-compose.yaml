@@ -6,14 +6,16 @@ services:
         ports: 
           - target: 4494
             published: 4494
-    activemq:
-      build: ./ActiveMQ
-      container_name: activemq
+    artemis:
+      build: ./Artemis
+      container_name: artemis
       ports:
         - target: 61616
           published: 61616
+          protocol: tcp
         - target: 8161
           published: 8161
+          protocol: tcp
     number-gen:
         build: ./Account-Num-Gen
         container_name: number-gen
@@ -39,7 +41,7 @@ services:
         depends_on:
           - "number-gen"
           - "prize-gen"
-          - "activemq"
+          - "artemis"
     jms-example:
         build: ./JMS-Example
         container_name: jms-example
@@ -47,4 +49,4 @@ services:
           - target: 8181
             published: 8181
         depends_on:
-          - "activemq"
+          - "artemis"

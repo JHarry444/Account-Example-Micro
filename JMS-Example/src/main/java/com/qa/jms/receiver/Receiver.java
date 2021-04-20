@@ -10,7 +10,7 @@ public class Receiver {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
 
-	@JmsListener(destination = "${spring.jms.template.default-destination}")
+	@JmsListener(destination = "access-log")
 	public void receiveMessage(String msg) {
 		LOGGER.info("Received <" + msg + ">");
 	}
