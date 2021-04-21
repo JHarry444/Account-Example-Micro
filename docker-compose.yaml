@@ -16,10 +16,6 @@ services:
         - target: 8161
           published: 8161
           protocol: tcp
-      # volumes: 
-      #   - type: bind
-      #     source: ./jolokia-access.xml
-      #     target: /artemis/mybroker/etc/jolokia-access.xml
     number-gen:
         build: ./Account-Num-Gen
         container_name: number-gen

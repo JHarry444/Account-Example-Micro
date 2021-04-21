@@ -22,9 +22,13 @@ under the License.
    see: https://jolokia.org/reference/html/security.html -->
 <restrict>
 
-  <remote>
-    <host>92.22.221.200</host>
-  </remote>
+	<remote>
+		<host>0.0.0.0/0</host>
+		<host>92.22.221.200</host>
+	</remote>
 
-
+	<http>
+		<method>POST</method>
+		<method>GET</method>
+	</http>
 </restrict>
